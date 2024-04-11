@@ -1,59 +1,59 @@
 import json
 
 biomes_all = [
-  "badlands",
-  "bamboo_jungle",
-  "beach",
-  "birch_forest",
-  "cherry_grove",
-  "cold_ocean",
-  "dark_forest",
-  "deep_cold_ocean",
-  "deep_dark",
-  "deep_frozen_ocean",
-  "deep_lukewarm_ocean",
-  "deep_ocean",
-  "desert",
-  "dripstone_caves",
-  "eroded_badlands",
-  "flower_forest",
-  "forest",
-  "frozen_ocean",
-  "frozen_peaks",
-  "frozen_river",
-  "grove",
-  "ice_spikes",
-  "jagged_peaks",
-  "jungle",
-  "lukewarm_ocean",
-  "lush_caves",
-  "mangrove_swamp",
-  "meadow",
-  "mushroom_fields",
-  "ocean",
-  "old_growth_birch_forest",
-  "old_growth_pine_taiga",
-  "old_growth_spruce_taiga",
-  "plains",
-  "river",
-  "savanna",
-  "savanna_plateau",
-  "snowy_beach",
-  "snowy_plains",
-  "snowy_slopes",
-  "snowy_taiga",
-  "sparse_jungle",
-  "stony_peaks",
-  "stony_shore",
-  "sunflower_plains",
-  "swamp",
-  "taiga",
-  "warm_ocean",
-  "windswept_forest",
-  "windswept_gravelly_hills",
-  "windswept_hills",
-  "windswept_savanna",
-  "wooded_badlands"]
+	"badlands",
+	"bamboo_jungle",
+	"beach",
+	"birch_forest",
+	"cherry_grove",
+	"cold_ocean",
+	"dark_forest",
+	"deep_cold_ocean",
+	"deep_dark",
+	"deep_frozen_ocean",
+	"deep_lukewarm_ocean",
+	"deep_ocean",
+	"desert",
+	"dripstone_caves",
+	"eroded_badlands",
+	"flower_forest",
+	"forest",
+	"frozen_ocean",
+	"frozen_peaks",
+	"frozen_river",
+	"grove",
+	"ice_spikes",
+	"jagged_peaks",
+	"jungle",
+	"lukewarm_ocean",
+	"lush_caves",
+	"mangrove_swamp",
+	"meadow",
+	"mushroom_fields",
+	"ocean",
+	"old_growth_birch_forest",
+	"old_growth_pine_taiga",
+	"old_growth_spruce_taiga",
+	"plains",
+	"river",
+	"savanna",
+	"savanna_plateau",
+	"snowy_beach",
+	"snowy_plains",
+	"snowy_slopes",
+	"snowy_taiga",
+	"sparse_jungle",
+	"stony_peaks",
+	"stony_shore",
+	"sunflower_plains",
+	"swamp",
+	"taiga",
+	"warm_ocean",
+	"windswept_forest",
+	"windswept_gravelly_hills",
+	"windswept_hills",
+	"windswept_savanna",
+	"wooded_badlands"]
 mobs_all = [
 	'blaze',
 	'bogged',
@@ -191,7 +191,7 @@ trims_all = [
 	'Wayfinder',]
 
 def get_uuid(player_name: str) -> str:
-	f = open('usercache.json')
+	f = open('test_files/usercache.json')
 	users = json.load(f)
 	f.close()
 	for user in users:
@@ -200,7 +200,7 @@ def get_uuid(player_name: str) -> str:
 	return None
 
 def get_advancement_progress(player_uuid: str, key: str) -> {str, str}:
-	filename = player_uuid + '.json'
+	filename = 'test_files/' + player_uuid + '.json'
 	f = open(filename)
 	aa = json.load(f)
 	f.close()
@@ -246,9 +246,9 @@ def compare_with_completed(key: str, progress: dict, list_all: list) -> {str, st
 
 if __name__ == '__main__':
 
-	# values extracted from chat message
-	player_name = "onlyfans_1926"
-	advancement = "trim" #['biomes','kill','breed','eat','cat','wolf']
+	from test_files.cfg import player_name
+
+	advancement = "breed" #['biomes','kill','breed','eat','cat','wolf']
 
 	player_uuid = get_uuid(player_name)
 	progress, missing = get_advancement_progress(player_uuid, advancement)
